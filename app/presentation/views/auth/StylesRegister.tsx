@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         alignSelf: 'center',
-        marginTop: 130,
+        marginTop: 33,
     },
     image: {
         width: 125,
@@ -39,27 +39,6 @@ const styles = StyleSheet.create({
         color: "#242424",
         borderBottomColor: "#242424",
     },
-    formInputContainer: {
-        marginBottom: 20
-    },
-    formInput: {
-        borderColor: "#d8d8d8",
-        borderWidth: 1,
-        paddingVertical: 8,
-        paddingHorizontal: 10,
-        borderRadius: 5,
-    },
-    buttonForm: {
-        backgroundColor: "#008fff",
-        paddingVertical: 9,
-        paddingHorizontal: 20,
-        borderRadius: 5
-    },
-    buttonFormText: {
-        color: "#FFF",
-        textAlign: "center",
-        fontSize: 17
-    }
 });
 
 export default styles;

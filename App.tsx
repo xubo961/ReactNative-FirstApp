@@ -1,7 +1,7 @@
 import {NavigationContainer, StackActions} from "@react-navigation/native";
 import {LoginScreen} from "./app/presentation/views/auth/Login";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import RegistroScreen from "./app/presentation/views/auth/registro";
+import RegistroScreen from "./app/presentation/views/auth/Registro";
 
 const Stack = createNativeStackNavigator();
 
