@@ -8,7 +8,7 @@ interface Props {
     placeholder: string,
     keyboardType: KeyboardType,
     secureTextEntry: boolean,
-    onPressFormInterface: () => void,
+    onPressFormInterface: (text: string) => void,
 
 }
 

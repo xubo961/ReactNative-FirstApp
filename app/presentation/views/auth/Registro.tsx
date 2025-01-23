@@ -4,10 +4,15 @@ import styles from "./StylesRegister";
 import {useNavigation} from "@react-navigation/native";
 import {RoundedButton} from "../../components/RoundedButton";
 import {FormInputInlineWithIcon} from "../../components/TextInput";
+import {useState} from "react";
+import viewModel from "./ViewModel";
 
 function RegistroScreen() {
 
     const navigation = useNavigation();
+    // const [nombre, setNombre] = useState<string>("");
+
+    const {firstName, lastName, email, number, password, repeatPassword, onChangeRegister, register} = viewModel.RegisterViewModel();
 
     return (
         <View style={styles.container}>
@@ -24,7 +29,7 @@ function RegistroScreen() {
                     placeholder={"Nombre"}
                     keyboardType="default"
                     secureTextEntry={false}
-                    onPressFormInterface={() => alert("")}
+                    onPressFormInterface={(text) => onChangeRegister('firstName', text)}
                 ></FormInputInlineWithIcon>
 
                 <FormInputInlineWithIcon
@@ -32,7 +37,7 @@ function RegistroScreen() {
                     placeholder={"Apellidos"}
                     keyboardType="default"
                     secureTextEntry={false}
-                    onPressFormInterface={() => alert("")}
+                    onPressFormInterface={(text) => onChangeRegister('lastName', text)}
                 ></FormInputInlineWithIcon>
 
                 <FormInputInlineWithIcon
@@ -40,7 +45,7 @@ function RegistroScreen() {
                     placeholder={"Correo electrónico"}
                     keyboardType="email-address"
                     secureTextEntry={false}
-                    onPressFormInterface={() => alert("")}
+                    onPressFormInterface={(text) => onChangeRegister('email', text)}
                 ></FormInputInlineWithIcon>
 
                 <FormInputInlineWithIcon
@@ -48,7 +53,7 @@ function RegistroScreen() {
                     placeholder={"Teléfono"}
                     keyboardType="numeric"
                     secureTextEntry={false}
-                    onPressFormInterface={() => alert("")}
+                    onPressFormInterface={(text) => onChangeRegister('number', text)}
                 ></FormInputInlineWithIcon>
 
                 <FormInputInlineWithIcon
@@ -56,7 +61,7 @@ function RegistroScreen() {
                     placeholder={"Contraseña"}
                     keyboardType="default"
                     secureTextEntry={true}
-                    onPressFormInterface={() => alert("")}
+                    onPressFormInterface={(text) => onChangeRegister('password', text)}
                 ></FormInputInlineWithIcon>
 
                 <FormInputInlineWithIcon
@@ -64,13 +69,14 @@ function RegistroScreen() {
                     placeholder={"Repetir contraseña"}
                     keyboardType="default"
                     secureTextEntry={true}
-                    onPressFormInterface={() => alert("")}
+                    onPressFormInterface={(text) => onChangeRegister('repeatPassword', text)}
                 ></FormInputInlineWithIcon>
 
                 <View>
                     <RoundedButton text={"Registrarse"} onPressFromInterface={() => {
-                        navigation.navigate("LoginScreen")
-                        alert("Registro finalizado")
+                        register()
+                        ToastAndroid.show("Botón presionado", ToastAndroid.LONG)
+
                     }}></RoundedButton>
                 </View>
 

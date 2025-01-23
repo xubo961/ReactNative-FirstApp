@@ -4,13 +4,19 @@ import styles from "./StylesLogin";
 import {useNavigation} from "@react-navigation/native";
 import {RoundedButton} from "../../components/RoundedButton";
 import {FormInputInlineWithIcon} from "../../components/TextInput";
+import viewModel from "./ViewModel";
+import {createStackNavigator} from "@react-navigation/native/lib/typescript/module/src/__stubs__/createStackNavigator";
+import {NativeStackNavigationProp, NativeStackView} from "@react-navigation/native-stack";
+import {RootStackParamsList} from "../../../../App";
 
 export function LoginScreen() {
 
-    const navigation = useNavigation();
+    const router = useNavigation<NativeStackNavigationProp<RootStackParamsList>>();
 
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    // const [email, setEmail] = useState<string>("");
+    // const [password, setPassword] = useState<string>("");
+
+    const {email, password, onChangeLogin} = viewModel.LoginVIewModel();
 
     return (
         <View style={styles.container}>
@@ -23,11 +29,11 @@ export function LoginScreen() {
                 <Text style={styles.formTittle}>INICIAR SESIÓN</Text>
 
                 <FormInputInlineWithIcon
-                    image={require("../../../../assets/user.png")}
-                    placeholder={"Nombre"}
-                    keyboardType="default"
+                    image={require("../../../../assets/email.png")}
+                    placeholder={"Correo electrónico"}
+                    keyboardType="email-address"
                     secureTextEntry={false}
-                    onPressFormInterface={(text: string) => setEmail(text)}
+                    onPressFormInterface={(text) => onChangeLogin('email', text)}
                 ></FormInputInlineWithIcon>
 
                 <FormInputInlineWithIcon
@@ -35,18 +41,18 @@ export function LoginScreen() {
                     placeholder={"Contraseña"}
                     keyboardType="default"
                     secureTextEntry={true}
-                    onPressFormInterface={(text) => setPassword(text)}
+                    onPressFormInterface={(text:string) => onChangeLogin('password', text)}
                 ></FormInputInlineWithIcon>
 
                 <View>
                     <RoundedButton text={"Iniciar Sesión"} onPressFromInterface={() => {
-                        alert("Hola")
+                        alert("Usuario" + email + "; contraseña: " + password);
                     }}></RoundedButton>
                 </View>
 
                 <View style={{marginTop: 30}}>
                         <RoundedButton text={"Registrar"} onPressFromInterface={() => {
-                            navigation.navigate("RegistroScreen")
+                            router.navigate("RegistroScreen")
                         }}></RoundedButton>
                 </View>
             </View>
