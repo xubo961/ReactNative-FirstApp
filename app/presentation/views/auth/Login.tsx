@@ -1,22 +1,32 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Image, Text, TextInput, ToastAndroid, TouchableOpacity, View} from "react-native";
 import styles from "./StylesLogin";
 import {useNavigation} from "@react-navigation/native";
 import {RoundedButton} from "../../components/RoundedButton";
 import {FormInputInlineWithIcon} from "../../components/TextInput";
 import viewModel from "./ViewModel";
-import {createStackNavigator} from "@react-navigation/native/lib/typescript/module/src/__stubs__/createStackNavigator";
-import {NativeStackNavigationProp, NativeStackView} from "@react-navigation/native-stack";
-import {RootStackParamsList} from "../../../../App";
+import {PropsStackNavigation} from "../../interfaces/StackNav";
 
-export function LoginScreen() {
 
-    const router = useNavigation<NativeStackNavigationProp<RootStackParamsList>>();
+export function LoginScreen({navigation, route}: PropsStackNavigation) {
 
+    // const router = useNavigation<NativeStackNavigationProp<RootStackParamsList>>();
     // const [email, setEmail] = useState<string>("");
     // const [password, setPassword] = useState<string>("");
 
-    const {email, password, onChangeLogin} = viewModel.LoginVIewModel();
+    const {email, password, onChangeLogin, login, errorMessage, user} = viewModel.LoginVIewModel();
+
+    useEffect(() => {
+        if (errorMessage != "")
+            ToastAndroid.show(errorMessage, ToastAndroid.LONG)
+    }, [errorMessage]);
+
+    useEffect(() => {
+        if (user && user?.token) {
+            console.log(JSON.stringify(user));
+            navigation.replace("RolesScreen");
+        }
+    }, [user]);
 
     return (
         <View style={styles.container}>
@@ -46,13 +56,14 @@ export function LoginScreen() {
 
                 <View>
                     <RoundedButton text={"Iniciar Sesión"} onPressFromInterface={() => {
-                        alert("Usuario" + email + "; contraseña: " + password);
+                        login()
+                        // navigation.navigate("LoginScreen")
                     }}></RoundedButton>
                 </View>
 
                 <View style={{marginTop: 30}}>
                         <RoundedButton text={"Registrar"} onPressFromInterface={() => {
-                            router.navigate("RegistroScreen")
+                            navigation.navigate("RegistroScreen")
                         }}></RoundedButton>
                 </View>
             </View>

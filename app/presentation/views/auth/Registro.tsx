@@ -4,7 +4,7 @@ import styles from "./StylesRegister";
 import {useNavigation} from "@react-navigation/native";
 import {RoundedButton} from "../../components/RoundedButton";
 import {FormInputInlineWithIcon} from "../../components/TextInput";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import viewModel from "./ViewModel";
 
 function RegistroScreen() {
@@ -12,7 +12,23 @@ function RegistroScreen() {
     const navigation = useNavigation();
     // const [nombre, setNombre] = useState<string>("");
 
-    const {firstName, lastName, email, number, password, repeatPassword, onChangeRegister, register} = viewModel.RegisterViewModel();
+    const {
+        firstName,
+        lastName,
+        email,
+        number,
+        password,
+        repeatPassword,
+        onChangeRegister,
+        register,
+        errorMessage
+    } = viewModel.RegisterViewModel();
+
+    useEffect(() => {
+        if (errorMessage != "") {
+            ToastAndroid.show(errorMessage, ToastAndroid.LONG)
+        }
+    }, [errorMessage]);
 
     return (
         <View style={styles.container}>
@@ -75,8 +91,6 @@ function RegistroScreen() {
                 <View>
                     <RoundedButton text={"Registrarse"} onPressFromInterface={() => {
                         register()
-                        ToastAndroid.show("Botón presionado", ToastAndroid.LONG)
-
                     }}></RoundedButton>
                 </View>
 
