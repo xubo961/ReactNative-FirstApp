@@ -4,12 +4,14 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import RegistroScreen from "./app/presentation/views/auth/Registro";
 import {ProfileInfoScreen} from "./app/presentation/views/profile/info/ProfileInfo";
 import {RolesScreen} from "./app/presentation/views/roles/Roles";
+import {AdminTabNavigator} from "./app/presentation/navigation/AdminTabNavigator";
 
 export type RootStackParamsList = {
     LoginScreen: undefined,
     RegistroScreen: undefined,
     ProfileInfoScreen: undefined,
-    RolesScreen: undefined
+    RolesScreen: undefined,
+    AdminTabNavigator: undefined
 }
 const Stack = createNativeStackNavigator<RootStackParamsList>();
 
@@ -19,8 +21,7 @@ export default function App() {
             <Stack.Navigator screenOptions={{headerShown: false}}>
                 <Stack.Screen name="LoginScreen" component={LoginScreen}/>
                 <Stack.Screen name="RegistroScreen" component={RegistroScreen} options={{headerShown: true, title: 'Registro'}}/>
-                <Stack.Screen name={"ProfileInfoScreen"} component={ProfileInfoScreen} options={{headerShown: true, title:"Perfil"}}/>
-                <Stack.Screen name={"RolesScreen"} component={RolesScreen} options={{headerShown: true, title:"Roles"}}/>
+                <Stack.Screen name={"AdminTabNavigator"} component={AdminTabNavigator} options={{title: "Navegación de administrador"}}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     );

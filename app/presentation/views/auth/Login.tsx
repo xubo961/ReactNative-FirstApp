@@ -24,7 +24,7 @@ export function LoginScreen({navigation, route}: PropsStackNavigation) {
     useEffect(() => {
         if (user && user?.token) {
             console.log(JSON.stringify(user));
-            navigation.replace("RolesScreen");
+            navigation.replace("AdminTabNavigator");
         }
     }, [user]);
 
