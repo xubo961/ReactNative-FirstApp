@@ -28,6 +28,20 @@ export function LoginScreen({navigation, route}: PropsStackNavigation) {
         }
     }, [user]);
 
+    // useEffect(() => {
+    //     // En el momento que se abre la ventana esto se ejecuta y comprueba si hay usuario
+    //     // También, si se efectua un cambio en su estado se ejecuta y vuelve a comprobar
+    //     if (user && user?.token) {
+    //         if (user.roles.length > 1) {// El navigate te lleva a la siguiente pantalla
+    //             navigation.replace("RolesScreen") // Reemplazamos la ventana actual por la que ponemos aquí
+    //         }
+    //         else {
+    //             navigation.replace("ClientTabNavigator")
+    //         }
+    //     }
+    // }, [user]);
+
+
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>

@@ -10,5 +10,9 @@ export const AppColors = {
 export const AppFonts = {
     italic: "PlayfairDisplay-Italic",
     normal: "PlayfairDisplay",
+    regular: "MontserratDisplay-Regular",
+    bold: "MontserratDisplay-Bold",
+    light: "MontserratDisplay-Light",
+    medium: "MontserratDisplay-Medium",
 
 }

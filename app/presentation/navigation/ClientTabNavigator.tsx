@@ -2,18 +2,18 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {RolesScreen} from "../views/roles/Roles";
 import {ProfileInfoScreen} from "../views/profile/info/ProfileInfo";
 import {Image} from "react-native";
-import {AdminOrderListScreen} from "../views/admin/order/list/OrderList";
-import {AdminCategoryListScreen} from "../views/admin/category/list/CategoryList";
+import {ClientCategoryListScreen} from "../views/client/category/list/CategoryList";
+import {ClientOrderListScreen} from "../views/client/order/list/OrderList";
 
 const Tab = createBottomTabNavigator();
 
-export const AdminTabNavigator = () => {
+export const ClientTabNavigator = () => {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="AdminCategoryListScreen"
+            <Tab.Screen name="Inicio"
                         options={{
-                            title: 'Lista de categorías',
-                            tabBarLabel: 'Inicio',
+                            title: "Lista de categorías",
+                            tabBarLabel: "Inicio",
                             tabBarIcon: ({color}) => (
                                 <Image
                                     source={require("../../../assets/list.png")}
@@ -21,13 +21,12 @@ export const AdminTabNavigator = () => {
                                 ></Image>
                             )
                         }}
-                        component={AdminCategoryListScreen}
+                        component={ClientCategoryListScreen}
             />
-
-            <Tab.Screen name="AdminOrderListScreen"
+            <Tab.Screen name="Inicio"
                         options={{
-                            title: 'Pedidos realizados',
-                            tabBarLabel: 'Pedidos',
+                            title: "Pedidos realizados",
+                            tabBarLabel: "Pedidos",
                             tabBarIcon: ({color}) => (
                                 <Image
                                     source={require("../../../assets/orders.png")}
@@ -35,23 +34,21 @@ export const AdminTabNavigator = () => {
                                 ></Image>
                             )
                         }}
-                        component={AdminOrderListScreen}
+                        component={ClientOrderListScreen}
             />
-
-
             <Tab.Screen name="Perfil"
                         options={{
-                            title: 'Mi perfil',
-                            tabBarLabel: 'Perfil',
+                            title: "Mi perfil",
+                            tabBarLabel: "Perfil",
                             tabBarIcon: ({color}) => (
                                 <Image
-                                    source={require("../../../assets/my_user.png")}
+                                    source={require("../../../assets/user_menu.png")}
                                     style={{width: 25, height: 25}}
-                                ></Image>
+                                >
+                                </Image>
                             )
                         }}
-                        component={ProfileInfoScreen}
-            />
+                        component={ProfileInfoScreen}/>
         </Tab.Navigator>
     );
 }
