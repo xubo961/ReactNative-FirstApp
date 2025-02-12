@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         marginTop: "6%",
         fontSize: 20,
         fontWeight: "bold",
-        fontFamily: AppFonts.variable
+        fontFamily: AppFonts.italic
     },
     imageContainer: {
         alignSelf: 'center',

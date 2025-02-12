@@ -8,5 +8,7 @@ export const AppColors = {
 }
 
 export const AppFonts = {
-    variable: "PlayfairDisplay-Italic",
+    italic: "PlayfairDisplay-Italic",
+    normal: "PlayfairDisplay",
+
 }
