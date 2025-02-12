@@ -6,3 +6,7 @@ export const AppColors = {
     background: "#EEEEEE",
     dark: "#2A2A2A"
 }
+
+export const AppFonts = {
+    variable: "PlayfairDisplay-Italic",
+}
